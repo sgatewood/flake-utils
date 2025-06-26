@@ -42,7 +42,7 @@ nix flake update sean-flake-utils
 
 When you create a PR for the result of `nix flake update`, nobody can tell what versions of our `pkgs` changed.
 
-What I wanted was a snapshot test to add that diff to your PR:
+What I wanted was a snapshot test to add that diff to your [PR](https://github.com/sgatewood/k3d/pull/4):
 
 ```diff
 diff --git a/flake.lock.pkgs.yaml b/flake.lock.pkgs.yaml
