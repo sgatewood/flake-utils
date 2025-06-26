@@ -34,6 +34,8 @@ just add me to your inputs:
 nix flake update sean-flake-utils
 ```
 
+# Utilities
+
 ## `pkgVersionSnapshotTest`
 
 ### Background
