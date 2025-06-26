@@ -27,8 +27,12 @@ in
         ];
       }
       ''
+        if ! [ -f "$src/${snapshotFileName}" ]; then
+          echo "snapshot file ('$src/${snapshotFileName}') doesn't exist) -- please update the snapshot"
+          exit 1
+        fi
         if ! diff -u --color <(yq -P "$src/${snapshotFileName}") <(yq -P "${expectedFile}"); then
-          echo "^^ snapshot is out of date"
+          echo "^^ snapshot is out of date -- please update the snapshot"
           exit 1
         fi
         mkdir "$out"
