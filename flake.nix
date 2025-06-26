@@ -17,13 +17,21 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         treefmtEval = treefmt-nix.lib.evalModule pkgs ./nix/treefmt.nix;
-      in
-      {
-        devShells.default = import ./nix/shell.nix {
+        devShell = import ./nix/shell.nix {
           inherit pkgs;
         };
+        pkgVersionSnapshotTest = (import ./nix/lib/index.nix).pkgVersionSnapshotTest {
+          inherit pkgs;
+          inherit devShell;
+          snapshotFileName = "flake.lock.pkgs.yaml";
+        };
+      in
+      {
+        devShells.default = devShell;
         formatter = treefmtEval.config.build.wrapper;
         checks.formatting = treefmtEval.config.build.check self;
+        checks.pkgVersionSnapshotTest = pkgVersionSnapshotTest.check;
+        apps.pkgVersionSnapshotTest = pkgVersionSnapshotTest.updateApp;
       }
     );
 }

@@ -1,0 +1,36 @@
+cowsay:
+  changelog: https://github.com/cowsay-org/cowsay/releases/tag/v3.8.4
+  description: Program which generates ASCII pictures of a cow with a message
+  homepage: https://cowsay.diamonds
+  name: cowsay-3.8.4
+  version: 3.8.4
+fzf:
+  changelog: https://github.com/junegunn/fzf/blob/v0.59.0/CHANGELOG.md
+  description: Command-line fuzzy finder written in Go
+  homepage: https://github.com/junegunn/fzf
+  name: fzf-0.59.0
+  version: 0.59.0
+just:
+  changelog: https://github.com/casey/just/blob/1.39.0/CHANGELOG.md
+  description: Handy way to save and run project-specific commands
+  homepage: https://github.com/casey/just
+  name: just-1.39.0
+  version: 1.39.0
+lolcat:
+  changelog: unknown
+  description: Rainbow version of cat
+  homepage: https://github.com/busyloop/lolcat
+  name: lolcat-100.0.1
+  version: 100.0.1
+sl:
+  changelog: unknown
+  description: Steam Locomotive runs across your terminal when you type 'sl'
+  homepage: http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html
+  name: sl-5.05
+  version: "5.05"
+yq:
+  changelog: https://github.com/mikefarah/yq/raw/v4.45.1/release_notes.txt
+  description: Portable command-line YAML processor
+  homepage: https://mikefarah.gitbook.io/yq/
+  name: yq-go-4.45.1
+  version: 4.45.1

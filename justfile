@@ -1,12 +1,11 @@
-cluster-up:
-    k3d cluster create sean --agents 2
+help:
+  @just -l
 
-cluster-down:
-    k3d cluster delete sean
+run-update:
+  nix run .#pkgVersionSnapshotTest
 
-cluster-reset:
-    just cluster-down
-    just cluster-up
-
-connect:
-    k3d kubeconfig get sean > .kubeconfig
+diff-closures:
+  #!/usr/bin/env bash
+  nix store diff-closures \
+    '.?ref=origin/main#.devShells.aarch64-darwin.default' \
+    '.?ref=HEAD#.devShells.aarch64-darwin.default'
