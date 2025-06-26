@@ -12,6 +12,9 @@
       flake-utils,
       treefmt-nix,
     }:
+    let
+      seanLib = (import ./nix/lib/index.nix);
+    in
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -20,7 +23,7 @@
         devShell = import ./nix/shell.nix {
           inherit pkgs;
         };
-        pkgVersionSnapshotTest = (import ./nix/lib/index.nix).pkgVersionSnapshotTest {
+        pkgVersionSnapshotTest = seanLib.pkgVersionSnapshotTest {
           inherit pkgs;
           inherit devShell;
           snapshotFileName = "flake.lock.pkgs.yaml";
@@ -33,5 +36,8 @@
         checks.pkgVersionSnapshotTest = pkgVersionSnapshotTest.check;
         apps.pkgVersionSnapshotTest = pkgVersionSnapshotTest.updateApp;
       }
-    );
+    )
+    // {
+      lib = seanLib;
+    };
 }
