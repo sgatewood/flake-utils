@@ -27,6 +27,7 @@
           inherit pkgs;
           inherit devShell;
           snapshotFileName = "flake.lock.pkgs.yaml";
+          snapshotFileDir = ./.;
         };
       in
       {

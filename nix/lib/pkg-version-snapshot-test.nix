@@ -2,6 +2,7 @@
   pkgs,
   devShell,
   snapshotFileName,
+  snapshotFileDir,
 }:
 let
   toolsMeta = (import ./dev-shell-to-tools-meta.nix) devShell;
@@ -19,14 +20,13 @@ in
   check =
     pkgs.runCommandLocal "pkgVersionSnapshotTest"
       {
-        src = ../../.;
+        src = snapshotFileDir;
         nativeBuildInputs = with pkgs; [
           diffutils
           yq-go
         ];
       }
       ''
-        echo "src = $src/${snapshotFileName}"
         if ! diff -u --color <(yq -P "$src/${snapshotFileName}") <(yq -P "${expectedFile}"); then
           echo "^^ snapshot is out of date"
           exit 1
