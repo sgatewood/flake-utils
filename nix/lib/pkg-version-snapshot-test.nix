@@ -10,9 +10,14 @@ let
   expectedFile = pkgs.writeText "expected.yaml" expectedYaml;
   updateScript = pkgs.writeShellApplication {
     name = "update-flake-lock-pkgs-yaml";
+    runtimeInputs = with pkgs; [
+      gitMinimal
+      yq-go
+    ];
     text = ''
       set -euo pipefail
-      yq -P ${expectedFile} > ${snapshotFileName}
+      repo_root="$(git rev-parse --show-toplevel)"
+      yq -P ${expectedFile} > "$repo_root/${snapshotFileName}"
     '';
   };
 in
