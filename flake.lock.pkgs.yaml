@@ -1,3 +1,4 @@
+# This file is auto-generated. Do not edit manually.
 cowsay:
   changelog: https://github.com/cowsay-org/cowsay/releases/tag/v3.8.4
   description: Program which generates ASCII pictures of a cow with a message

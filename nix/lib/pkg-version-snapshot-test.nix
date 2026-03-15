@@ -6,7 +6,9 @@
 }:
 let
   toolsMeta = (import ./dev-shell-to-tools-meta.nix) devShell;
-  expectedYaml = pkgs.lib.generators.toYAML { } toolsMeta;
+  expectedYaml =
+    "# This file is auto-generated. Do not edit manually.\n"
+    + (pkgs.lib.generators.toYAML { } toolsMeta);
   expectedFile = pkgs.writeText "expected.yaml" expectedYaml;
   updateScript = pkgs.writeShellApplication {
     name = "update-flake-lock-pkgs-yaml";
